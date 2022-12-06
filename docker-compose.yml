@@ -7,3 +7,18 @@ services:
       - 27017:27017
     volumes:
       - ./mongo/db:/data/db
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/app/
+      - dependencies:/usr/src/app/node_modules
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    command: npm run dev
+
+volumes:
+  dependencies:

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/main.ts"
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/main.ts",
+    "build": "tsc -p .",
+    "start": "NODE_PATH=./dist/main.ts"
   },
   "author": "",
   "license": "ISC",

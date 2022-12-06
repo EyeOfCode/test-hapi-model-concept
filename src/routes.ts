@@ -1,9 +1,9 @@
 import { Server } from "@hapi/hapi";
-import UsersModel from "./models/users.model";
+import UsersDAO from "./dao/users.dao";
 import UsersService from "./module/users/users.service";
 
 const Routes = async (server: Server) => {
-  const userService = new UsersService(new UsersModel());
+  const userService = new UsersService(new UsersDAO());
 
   await server.route([
     {

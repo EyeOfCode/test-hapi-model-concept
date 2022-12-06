@@ -3,21 +3,23 @@ import Users from "../schema/users.schema";
 export interface IUser {
   firstName: string;
   lastName: string;
+  updatedAt: Date;
 }
 
 class UsersModel {
-  constructor() {}
-
-  async findFullName() {
-    const res = await Users.find();
-    return res.map((item: IUser) => {
-      console.log(item);
+  async findFullName(data: any) {
+    return data.map((item: IUser) => {
       return { fullName: item.firstName + item.lastName };
     });
   }
 
-  async create(data: IUser) {
-    return await Users.create(data);
+  async defaultResponse(data: IUser) {
+    return {
+      fullName: data.firstName + data.lastName,
+      fistName: data.firstName,
+      lastName: data.lastName,
+      date: data.updatedAt,
+    };
   }
 }
 

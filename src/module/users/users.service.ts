@@ -1,10 +1,10 @@
-import UsersModel from "../../models/users.model";
+import UsersDAO from "../../dao/users.dao";
 
 class UsersService {
-  constructor(private userModel: UsersModel) {}
+  constructor(private userDAO: UsersDAO) {}
 
   async listFullName() {
-    return this.userModel.findFullName();
+    return this.userDAO.find();
   }
 
   async create(data: any) {
@@ -12,7 +12,7 @@ class UsersService {
       firstName: data.payload.firstName,
       lastName: data.payload.lastName,
     };
-    return this.userModel.create(users);
+    return this.userDAO.create(users);
   }
 }
 
